@@ -41,14 +41,22 @@
                 return 0;
             }
 
-            var joinRulesAndScans = from n in this.scannedInventoryItems
-                                    join o in this.rules on n equals o.Item.Sku
-                                    select o;
-
             // Sum up all the null offers
-            double total = joinRulesAndScans.Where(n => n.Offer == null).Sum(n => n.Item.Price);
+            double total = this.JoinedRuleItems().Where(n => n.Offer == null).Sum(n => n.Item.Price);
+
+            foreach (var rule in this.rules.Where(n => n.Offer != null))
+            {
+                total = total + rule.Offer.Calculate(this.JoinedRuleItems().Select(n => n.Item).Where(n => n.Sku.Equals(rule.Item.Sku)).ToList());
+            }
 
             return total;
+        }
+
+        private IEnumerable<Rule> JoinedRuleItems()
+        {
+            return from n in this.scannedInventoryItems
+                   join o in this.rules on n equals o.Item.Sku
+                   select o;
         }
     }
 }
