@@ -3,6 +3,7 @@
     using System.Collections.Generic;
 
     using Digital7.Shopping;
+    using Digital7.Shopping.DiscountOffer;
 
     using FluentAssertions;
 
@@ -18,9 +19,14 @@
         [SetUp]
         public void SetUp()
         {
+            Rule ruleA = new Rule(new InventoryItem("A", 50), new PriceForMany(3, 130));
+            Rule ruleB = new Rule(new InventoryItem("B", 30), new PriceForMany(2, 45));
+            Rule ruleC = new Rule(new InventoryItem("C", 20), null);
+            Rule ruleD = new Rule(new InventoryItem("D", 15), null);
+
             // Set up stub for ruleFactory
             IRuleCreator ruleCreator = Substitute.For<IRuleCreator>();
-            ruleCreator.Load().Returns(new List<Rule>());
+            ruleCreator.Load().Returns(new List<Rule> { ruleA, ruleB, ruleC, ruleD });
             this.ruleFactory = new RuleFactory(ruleCreator);
         }
 
