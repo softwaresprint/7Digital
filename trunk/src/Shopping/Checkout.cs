@@ -1,6 +1,7 @@
 ﻿namespace Digital7.Shopping
 {
     using System.Collections.Generic;
+    using System.Linq;
 
     public class Checkout
     {
@@ -40,7 +41,14 @@
                 return 0;
             }
 
-            return -1;
+            var joinRulesAndScans = from n in this.scannedInventoryItems
+                                    join o in this.rules on n equals o.Item.Sku
+                                    select o;
+
+            // Sum up all the null offers
+            double total = joinRulesAndScans.Where(n => n.Offer == null).Sum(n => n.Item.Price);
+
+            return total;
         }
     }
 }
