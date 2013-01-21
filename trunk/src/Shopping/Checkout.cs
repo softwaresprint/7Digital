@@ -15,11 +15,21 @@
 
         public void Scan(string sku)
         {
+            if (string.IsNullOrEmpty(sku))
+            {
+                return;
+            }
+
             this.scannedInventoryItems.Add(sku);
         }
 
         public double Total()
         {
+            if (this.scannedInventoryItems.Count == 0)
+            {
+                return 0;
+            }
+
             return -1;
         }
     }
