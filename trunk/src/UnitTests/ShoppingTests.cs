@@ -72,5 +72,17 @@
 
             checkout.Total().Should().Be(175);
         }
+
+        [Test]
+        public void Total_ScanManyAllItemsWithOutDiscount_ReturnsCorrectPrice()
+        {
+            Checkout checkout = new Checkout(this.rules);
+            checkout.Scan("C");
+            checkout.Scan("C");
+            checkout.Scan("D");
+            checkout.Scan("D");
+
+            checkout.Total().Should().Be(70);
+        }
     }
 }
