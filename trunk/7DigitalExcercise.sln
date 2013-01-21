@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "src\UnitTests\UnitTests.csproj", "{716F335D-4576-481C-89C0-6033FD637C48}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A59FFA18-547C-4EDF-865B-75FDD221D258}"
+	ProjectSection(SolutionItems) = preProject
+		Settings.StyleCop = Settings.StyleCop
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shopping", "src\Shopping\Shopping.csproj", "{384D8A98-7B9D-4E13-AEF3-B4AEA49575CB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{716F335D-4576-481C-89C0-6033FD637C48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{716F335D-4576-481C-89C0-6033FD637C48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{716F335D-4576-481C-89C0-6033FD637C48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{716F335D-4576-481C-89C0-6033FD637C48}.Release|Any CPU.Build.0 = Release|Any CPU
+		{384D8A98-7B9D-4E13-AEF3-B4AEA49575CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{384D8A98-7B9D-4E13-AEF3-B4AEA49575CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{384D8A98-7B9D-4E13-AEF3-B4AEA49575CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{384D8A98-7B9D-4E13-AEF3-B4AEA49575CB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
