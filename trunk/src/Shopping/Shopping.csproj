@@ -41,8 +41,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Checkout.cs" />
+    <Compile Include="IRuleCreator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rule.cs" />
+    <Compile Include="RuleFactory.cs" />
+    <Compile Include="RuleXmlCreator.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
