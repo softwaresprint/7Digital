@@ -23,7 +23,16 @@
                 return inventoryItems.Sum(n => n.Price);
             }
 
-            return -1;
+            // See how many times the discount can be applied
+            int discountItems = inventoryItems.Count / this.skuCount;
+
+            // See how many are left after the discount
+            int nonDiscountItems = inventoryItems.Count % this.skuCount;
+
+            double total = discountItems * this.skuTotal;
+            total = total + inventoryItems.Take(nonDiscountItems).Sum(n => n.Price);
+
+            return total;
         }
     }
 }
