@@ -41,15 +41,32 @@
                 return 0;
             }
 
-            // Sum up all the null offers
-            double total = this.JoinedRuleItems().Where(n => n.Offer == null).Sum(n => n.Item.Price);
+            var total = this.OfferItemsTotal() + this.OfferlessItemsTotal();
+
+            return total;
+        }
+
+        private double OfferItemsTotal()
+        {
+            double total = 0;
 
             foreach (var rule in this.rules.Where(n => n.Offer != null))
             {
-                total = total + rule.Offer.Calculate(this.JoinedRuleItems().Select(n => n.Item).Where(n => n.Sku.Equals(rule.Item.Sku)).ToList());
+                Rule closureRule = rule;
+                var items = from n in this.JoinedRuleItems()
+                            where n.Offer != null && n.Item.Sku.Equals(closureRule.Item.Sku)
+                            select n.Item;
+
+                total = total + rule.Offer.Calculate(items.ToList());
             }
 
             return total;
+        }
+
+        private double OfferlessItemsTotal()
+        {
+            // Sum up all the null offers
+            return this.JoinedRuleItems().Where(n => n.Offer == null).Sum(n => n.Item.Price);
         }
 
         private IEnumerable<Rule> JoinedRuleItems()
