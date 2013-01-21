@@ -10,6 +10,11 @@
 
         public Checkout(List<Rule> rules)
         {
+            if (rules == null)
+            {
+                this.rules = new List<Rule>();
+            }
+
             this.rules = rules;
         }
 
@@ -26,6 +31,11 @@
         public double Total()
         {
             if (this.scannedInventoryItems.Count == 0)
+            {
+                return 0;
+            }
+
+            if (this.rules.Count == 0)
             {
                 return 0;
             }

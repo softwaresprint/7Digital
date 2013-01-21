@@ -31,6 +31,14 @@
         }
 
         [Test]
+        public void Total_NoRules_Returns0()
+        {
+            Checkout checkout = new Checkout(null);
+
+            checkout.Total().Should().Be(0);
+        }
+
+        [Test]
         public void Total_DoNotScanAnything_Returns0()
         {
             Checkout checkout = new Checkout(this.ruleFactory.Load());
